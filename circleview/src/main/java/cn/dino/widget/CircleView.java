@@ -11,7 +11,6 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
@@ -136,32 +135,6 @@ public class CircleView extends View {
         }
 
         return measureValue;
-    }
-
-    private int getWHDimension(int widthMeasureSpec, int heightMeasureSpec) {
-        int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
-        int widthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
-
-        int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
-        int heightSpecMode = MeasureSpec.getMode(heightMeasureSpec);
-
-        Log.i(TAG, "getWHDimension:widthSpecSize = " + widthSpecSize);
-        Log.i(TAG, "getWHDimension:heightSpecSize = " + heightSpecSize);
-
-        int defaultValue = dp2px(100);
-
-        if (widthSpecMode == MeasureSpec.EXACTLY && heightSpecMode == MeasureSpec.EXACTLY) {
-            Log.i(TAG, "getWHDimension: =====EXACTLY====" + Math.min(widthSpecSize, heightSpecSize));
-            return Math.min(widthSpecSize, heightSpecSize);
-        } else if (widthSpecMode == MeasureSpec.EXACTLY && heightSpecMode == MeasureSpec.AT_MOST) {
-            return Math.min(widthSpecSize, defaultValue);
-        } else if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.EXACTLY) {
-            return Math.min(heightSpecSize, defaultValue);
-        } else if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST) {
-            return defaultValue;
-        }
-
-        return defaultValue;
     }
 
     @Override
